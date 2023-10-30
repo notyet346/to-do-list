@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+        *{
+            margin: 0;
+            padding: 0; 
+            user-select: none;
+        }
+        :root{
+            --body-bg: hsl(218, 28%, 13%);
+            --list-bg: hsl(216, 53%, 9%);
+            --item-bg: hsl(219, 30%, 18%);
+            --neutral: hsl(0, 0%, 100%);
+        }
+
+
+
+        body{
+            background: var(--body-bg);
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+        }
+        .list{
+            background: var(--list-bg);
+        }
+        li {
+            background: var(--item-bg);
+            color: var(--neutral);
+            list-style: none;
+            padding: .5rem;
+            margin: .5rem;           
+        }
+
+        li, 
+        input[type=submit],
+        .close {
+            cursor: pointer;
+        }
+        .list, input {
+            border-radius: 10px;
+        } 
+        form{
+            margin: 1rem;
+        }
+        input{
+            height: 30px;
+            border: transparent;
+        }
+        input[type=text] {
+            margin-right: 1rem;
+            vertical-align: middle;
+            padding-left: 1rem;
+        }
+        input[type=submit]{
+            font-weight: 700;
+            font-size: 1.5em;
+            width: 30px;
+            vertical-align: middle;
+        }
+
+        .task-complete {
+            text-decoration: line-through;
+            background: var(--body-bg);
+        }
+        .close{
+            float: right;
+            color: rgb(250, 127, 127);
+            height: 1rem;
+            width: 1rem;
+            border-radius: 5px;
+            border: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="list" id="list">
+        <form>
+            <input type="text" id="input-field">
+            <input type="submit" value="+" id="submit">
+        </form>
+      <ul id="items">
+    
+      </ul> 
+      
+    </div>
+<script>
+    let btn_submit = document.getElementById("submit");
+    
+    //create  new list item
+    btn_submit.addEventListener( "click", function(){
+    let items_ul = document.getElementById("items");
+    let userInput = document.getElementById("input-field").value;
+    let count = 0;
+        
+    //add new list item
+    let item = document.createElement("li");
+   
+    if(userInput !== ""){
+            
+        items_ul.appendChild(item);
+            
+            //form user input as new list item   
+            item.innerHTML = userInput;
+            event.preventDefault();
+        } else {
+            alert("input field empty")
+            event.preventDefault();
+        } 
+        
+    //check  item
+    item.addEventListener("click", function(){
+        item.classList.toggle("task-complete");
+    });   
+
+    //close button
+    let btn_close = document.createElement("span");
+    item.appendChild(btn_close)
+
+    btn_close.classList.toggle("close");
+    btn_close.innerHTML = "x";
+    
+    btn_close.addEventListener("click", function(){
+        item.remove();
+    });
+    });
+</script>
+</body>
+</html>
