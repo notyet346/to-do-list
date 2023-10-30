@@ -1,8 +1,8 @@
 # Todo app using JavaScript - Vanilla
 
-### Overview
+- Live on Codepen: (https://codepen.io/notyet346/pen/XWOdjZz)
 
-Users should be able to:
+### Users should be able to:
 
 - add an item to the list 
 - remove item from the list
