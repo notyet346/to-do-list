@@ -104,20 +104,13 @@
     let count = 0;
         
     //add new list item
+    if (userInput == null || userInput === '') return;       
     let item = document.createElement("li");
-   
-    if(userInput !== ""){
-            
-        items_ul.appendChild(item);
-            
-            //form user input as new list item   
-            item.innerHTML = userInput;
-            event.preventDefault();
-        } else {
-            alert("input field empty")
-            event.preventDefault();
-        } 
-        
+    items_ul.appendChild(item);
+    
+    //form user input as new list item   
+    item.innerHTML = userInput;
+    
     //check  item
     item.addEventListener("click", function(){
         item.classList.toggle("task-complete");
@@ -133,6 +126,8 @@
     btn_close.addEventListener("click", function(){
         item.remove();
     });
+    event.preventDefault();
+    
     });
 </script>
 </body>
